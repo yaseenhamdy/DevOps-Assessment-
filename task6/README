@@ -1,0 +1,19 @@
+# Task 6: Advanced Security and Monitoring Configuration
+
+
+First, I disabled direct root login over SSH by editing the file `/etc/ssh/sshd_config`
+setting `PermitRootLogin no`
+then restarted the SSH service using `sudo systemctl restart ssh`. 
+
+
+Next I secured the server with a firewall using `ufw`.
+allowed only port 22 for SSH and restricted PostgreSQL port 5432 to localhost with:
+(
+sudo ufw allow 22/tcp
+sudo ufw allow from 127.0.0.1 to any port 5432
+sudo ufw enable
+)
+
+This prevents weak-password brute-force attacks. I verified by reconnecting using `psql -h 127.0.0.1 -U postgres -d postgres` and entering the new password.
+
+
