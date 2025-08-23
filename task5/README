@@ -1,0 +1,21 @@
+# Task 5: Database Container Setup (Medium)
+
+## 🎯 Objective
+Set up a containerized PostgreSQL database with basic security:
+- Run PostgreSQL inside a Docker container.
+- Restrict access so it’s only available on the host machine (localhost).
+- Create a database named `junior_db`.
+- Verify connectivity from the host using `psql`.
+
+---
+
+## 🛠️ Steps & Commands
+
+### 1. Run PostgreSQL Container
+Run a PostgreSQL container with a password (`devops_pass`) and bind it to `localhost` only:
+```bash
+docker run -d \
+  --name pg_container \
+  -e POSTGRES_PASSWORD=devops_pass \
+  -p 127.0.0.1:5432:5432 \
+  postgres:15
